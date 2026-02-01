@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./Footer.module.css";
-import { Mail, Phone, Github } from "lucide-react";
+import { Mail, Github } from "lucide-react";
 
 export default function Footer() {
     return (
@@ -11,11 +11,7 @@ export default function Footer() {
                 <div className={styles.contactInfo}>
                     <div className={styles.item}>
                         <Mail size={20} />
-                        <a href="mailto:ifung97@gmail.com">ifung97@gmail.com</a>
-                    </div>
-                    <div className={styles.item}>
-                        <Phone size={20} />
-                        <a href="tel:+85254054452">+852 5405 4452</a>
+                        <a href="mailto:www.a98590715@gmail.com">www.a98590715@gmail.com</a>
                     </div>
                     <div className={styles.item}>
                         <Github size={20} />
