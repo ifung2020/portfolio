@@ -23,8 +23,8 @@ export default function About() {
                     >
                         <h2 className={styles.title}>About <span className="neon-text">Me</span></h2>
                         <p className={styles.paragraph}>
-                            I am a final-year MSIM student at **Hang Seng University of Hong Kong (HSUHK)**.
-                            My journey in tech began with a curiosity for immersive worlds, leading me to specialize in **VR Development** and **IT Operations**.
+                            I am a final-year MSIM student at Hang Seng University of Hong Kong (HSUHK).
+                            My journey in tech began with a curiosity for immersive worlds, leading me to specialize in VR Development and IT Operations.
                         </p>
                         <p className={styles.paragraph}>
                             With a strong background in Unity and C#, I've had the privilege of working on professional-grade VR experiences,
