@@ -1,0 +1,92 @@
+.education {
+    background: var(--background);
+}
+
+.title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 70px;
+    color: var(--foreground);
+}
+
+.card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+.card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 15px 40px -15px rgba(165, 243, 252, 0.2);
+}
+
+.iconWrapper {
+    flex: 0 0 100px;
+    height: 100px;
+    border-radius: 25px;
+    background: rgba(165, 243, 252, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    border: 1px solid rgba(165, 243, 252, 0.1);
+    box-shadow: 0 0 20px var(--primary-glow);
+}
+
+.content {
+    flex: 1;
+}
+
+.university {
+    font-family: var(--font-orbitron);
+    font-size: 1.6rem;
+    color: var(--foreground);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+}
+
+.degree {
+    font-size: 1.15rem;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+.year {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 24px;
+    font-family: var(--font-orbitron);
+}
+
+.highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.highlight {
+    padding: 8px 16px;
+    background: rgba(165, 243, 252, 0.05);
+    border: 1px solid rgba(165, 243, 252, 0.1);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.label {
+    color: var(--primary);
+    font-weight: 700;
+    margin-right: 4px;
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column;
+        text-align: center;
+        padding: 32px;
+    }
+}
