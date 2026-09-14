@@ -1,88 +1,104 @@
 .about {
-    background: linear-gradient(180deg, var(--background) 0%, #0d0d0d 100%);
-    position: relative;
-    background: var(--background);
+    background: #ffffff;
+    padding: 100px 0;
 }
 
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 60px;
     align-items: center;
 }
 
-.content {
-    display: flex;
-    flex-direction: column;
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+    color: #0f172a;
 }
 
-.title {
-    font-size: 3rem;
-    margin-bottom: 32px;
-    color: var(--foreground);
+.highlight {
+    color: #2563eb;
 }
 
 .paragraph {
     font-size: 1.1rem;
-    color: #94a3b8;
+    color: #475569;
     line-height: 1.8;
     margin-bottom: 24px;
 }
 
 .stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    display: flex;
+    gap: 40px;
     margin-top: 40px;
 }
 
 .statItem {
-    text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 
 .statValue {
-    font-family: var(--font-orbitron);
-    font-size: 1.5rem;
-    color: var(--primary);
-    margin-bottom: 8px;
-    text-shadow: 0 0 10px var(--primary-glow);
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 4px;
 }
 
 .statLabel {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #64748b;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.05em;
 }
 
 .visual {
-    display: flex;
-    justify-content: center;
+    position: relative;
+    padding: 20px;
 }
 
 .box {
-    width: 100%;
-    max-width: 450px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
     padding: 40px;
-    border-radius: 24px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #2563eb;
 }
 
 .boxContent h3 {
-    font-family: var(--font-orbitron);
     font-size: 1.5rem;
-    color: var(--primary);
-    margin-bottom: 20px;
+    color: #0f172a;
+    margin-bottom: 16px;
+    font-weight: 700;
 }
 
 .boxContent p {
-    color: #94a3b8;
-    line-height: 1.6;
     font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.7;
 }
 
 @media (max-width: 968px) {
     .grid {
         grid-template-columns: 1fr;
-        gap: 60px;
+        gap: 40px;
+    }
+    
+    .stats {
+        flex-wrap: wrap;
+        gap: 30px;
     }
 }

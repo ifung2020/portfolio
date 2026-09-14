@@ -1,206 +1,193 @@
 .projects {
-    background: relative;
+    background: #ffffff;
+    padding: 100px 0;
 }
 
 .title {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    margin-bottom: 60px;
     text-align: center;
-    margin-bottom: 70px;
-    color: var(--foreground);
+    color: #0f172a;
+}
+
+.highlight {
+    color: #2563eb;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 32px;
 }
 
 .card {
-    background: var(--card-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
+    background: #ffffff;
+    border-radius: 12px;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    position: relative;
 }
 
 .card:hover {
-    transform: translateY(-12px);
-    border-color: var(--primary);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(165, 243, 252, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.08);
+    border-color: #cbd5e1;
+}
+
+.clickable {
+    cursor: pointer;
 }
 
 .imageGallery {
-    width: 100%;
-    height: 220px;
-    background: #0f172a;
     position: relative;
+    width: 100%;
+    height: 200px;
+    background: #f1f5f9;
     overflow: hidden;
 }
 
 .imageGrid {
+    position: relative;
     width: 100%;
     height: 100%;
-    position: relative;
 }
 
 .mainImage {
     object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.card:hover .mainImage {
-    transform: scale(1.05);
 }
 
 .overlay {
     position: absolute;
-    top: 12px;
+    bottom: 12px;
     right: 12px;
-    background: rgba(2, 6, 23, 0.8);
+    background: rgba(15, 23, 42, 0.7);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
     backdrop-filter: blur(4px);
-    padding: 4px 12px;
-    border-radius: 100px;
-    font-size: 0.75rem;
-    color: var(--primary);
-    border: 1px solid var(--glass-border);
-    font-family: var(--font-orbitron);
+}
+
+.clickHint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(37, 99, 235, 0.8);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.clickable:hover .clickHint {
+    opacity: 1;
 }
 
 .imagePlaceholder {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #475569;
-    font-family: var(--font-orbitron);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.8rem;
+    background: linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 100%);
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 20px;
 }
 
 .content {
-    padding: 32px;
+    padding: 24px;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
 .projectTitle {
-    font-family: var(--font-orbitron);
     font-size: 1.4rem;
-    color: var(--foreground);
+    color: #0f172a;
     margin-bottom: 12px;
-    letter-spacing: 0.02em;
+    font-weight: 700;
 }
 
 .tags {
     display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
     flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
 }
 
 .tag {
-    font-size: 0.75rem;
-    padding: 4px 12px;
+    background: #f1f5f9;
+    color: #475569;
+    padding: 4px 10px;
     border-radius: 6px;
-    background: rgba(165, 243, 252, 0.05);
-    color: var(--primary);
-    border: 1px solid rgba(165, 243, 252, 0.1);
-    font-family: var(--font-orbitron);
+    font-size: 0.8rem;
+    font-weight: 600;
 }
 
 .description {
-    font-size: 1rem;
-    color: #94a3b8;
+    color: #475569;
     line-height: 1.6;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     flex: 1;
 }
 
 .links {
     display: flex;
-    gap: 20px;
+    gap: 16px;
     margin-top: auto;
 }
 
 .link {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 8px;
-    color: var(--primary);
-    font-size: 0.85rem;
-    transition: all 0.3s ease;
-    font-family: var(--font-orbitron);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    gap: 6px;
+    color: #2563eb;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
 }
 
 .link:hover {
-    color: #fff;
-    text-shadow: 0 0 10px var(--primary-glow);
+    color: #1e40af;
+    text-decoration: underline;
 }
 
-.card.clickable {
-    cursor: pointer;
-}
-
-.clickHint {
-    position: absolute;
-    inset: 0;
-    background: rgba(165, 243, 252, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    backdrop-filter: blur(4px);
-}
-
-.card:hover .clickHint {
-    opacity: 1;
-}
-
-.clickHint span {
-    background: var(--primary);
-    color: #020617;
-    padding: 8px 20px;
-    border-radius: 100px;
-    font-family: var(--font-orbitron);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 0 20px var(--primary-glow);
-}
-
+/* Lightbox styles remain but with cleaner UI */
 .lightbox {
     position: fixed;
-    inset: 0;
-    background: rgba(2, 6, 23, 0.95);
-    backdrop-filter: blur(10px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.95);
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    backdrop-filter: blur(8px);
 }
 
 .lightboxContent {
-    width: 100%;
+    position: relative;
+    width: 90%;
     max-width: 1200px;
     height: 90vh;
     display: flex;
     flex-direction: column;
-    position: relative;
-    background: rgba(15, 23, 42, 0.5);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
+    background: #ffffff;
+    border-radius: 12px;
     overflow: hidden;
 }
 
@@ -208,38 +195,42 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    background: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
     border: none;
-    color: #94a3b8;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     z-index: 10;
-    transition: all 0.3s ease;
+    transition: background 0.2s;
 }
 
 .closeBtn:hover {
-    color: var(--primary);
-    transform: rotate(90deg);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .lightboxImageContainer {
-    flex: 1;
     position: relative;
+    flex: 1;
     width: 100%;
-    margin-bottom: 20px;
+    background: #0f172a;
 }
 
 .lightboxImage {
     object-fit: contain;
 }
 
-.navBtnPrev,
-.navBtnNext {
+.navBtnPrev, .navBtnNext {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
-    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -247,15 +238,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 5;
-}
-
-.navBtnPrev:hover,
-.navBtnNext:hover {
-    background: rgba(165, 243, 252, 0.2);
-    border-color: var(--primary);
-    color: var(--primary);
+    transition: background 0.2s;
 }
 
 .navBtnPrev {
@@ -266,51 +249,37 @@
     right: 20px;
 }
 
+.navBtnPrev:hover, .navBtnNext:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
 .imageCounter {
     position: absolute;
-    bottom: 120px;
+    bottom: 100px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(2, 6, 23, 0.8);
-    padding: 4px 16px;
-    border-radius: 100px;
-    font-family: var(--font-orbitron);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
     font-size: 0.9rem;
-    color: var(--primary);
-    border: 1px solid var(--glass-border);
+    letter-spacing: 2px;
 }
 
 .lightboxDetails {
-    background: rgba(2, 6, 23, 0.8);
-    padding: 30px 40px;
-    border-top: 1px solid var(--glass-border);
+    background: #ffffff;
+    padding: 24px;
+    text-align: center;
 }
 
 .lightboxDetails h3 {
-    font-family: var(--font-orbitron);
-    font-size: 1.8rem;
-    color: var(--primary);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    color: #0f172a;
+    font-size: 1.5rem;
 }
 
 .lightboxDetails p {
-    color: #94a3b8;
+    color: #475569;
     max-width: 800px;
-    line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-    .lightboxContent {
-        height: 80vh;
-    }
-
-    .lightboxDetails h3 {
-        font-size: 1.4rem;
-    }
-
-    .navBtnPrev,
-    .navBtnNext {
-        width: 40px;
-        height: 40px;
-    }
+    margin: 0 auto;
 }

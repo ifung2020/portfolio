@@ -2,24 +2,29 @@
 
 import { motion } from "framer-motion";
 import styles from "./Skills.module.css";
-import { Code, Users, Languages, Gamepad2, Brain, MessageCircle, Server, Terminal } from "lucide-react";
+import { Code, Settings, Languages, Gamepad2, Wrench, Globe } from "lucide-react";
 
 export default function Skills() {
     const skillCategories = [
         {
-            title: "Technical",
+            title: "Development & Languages",
+            icon: <Code size={24} />,
+            skills: ["C# (OOP)", "TypeScript / JavaScript", "HTML / CSS", "React & Next.js"]
+        },
+        {
+            title: "VR & Interactive Tech",
             icon: <Gamepad2 size={24} />,
-            skills: ["Unity Engine", "C# (Basic)", "VR Interaction", "IT Support"]
+            skills: ["Unity Engine", "Oculus SDK", "VR Interaction Design", "AI State Machines"]
         },
         {
-            title: "Professional",
-            icon: <Brain size={24} />,
-            skills: ["Problem Solving", "Teamwork", "Customer Care", "Event Hosting"]
+            title: "Operations & Automation",
+            icon: <Settings size={24} />,
+            skills: ["Process Automation & Scripting", "Hardware Troubleshooting", "System Deployment", "IT Support"]
         },
         {
-            title: "Languages",
-            icon: <Languages size={24} />,
-            skills: ["Cantonese (Native)", "Putonghua (Native)", "English (Intermediate)"]
+            title: "Spoken Languages",
+            icon: <Globe size={24} />,
+            skills: ["Cantonese (Native)", "Mandarin (Native)", "English (Professional)"]
         }
     ];
 
@@ -32,7 +37,7 @@ export default function Skills() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    My <span className="neon-text">Toolkit</span>
+                    Technical <span className={styles.highlight}>Toolkit</span>
                 </motion.h2>
 
                 <div className={styles.grid}>

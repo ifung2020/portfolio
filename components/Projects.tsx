@@ -12,6 +12,13 @@ export default function Projects() {
 
     const projects = [
         {
+            title: "Operations Automation Scripts",
+            description: "Adapted and deployed automated logistics workflows for Decathlon HK (Tuen Mun), including branch-specific CLP shipment list generation and real-time email compliance alerts for store safety and staff tracking.",
+            tags: ["Automation", "Process Improvement", "Scripting"],
+            images: [],
+            link: "#"
+        },
+        {
             title: "VR Horror Game",
             description: "Developed for Varlive HK Halloween events. A terrifying immersive experience built with Unity and C# featuring dynamic AI and atmospheric sound design.",
             tags: ["Unity", "C#", "Oculus SDK"],
@@ -85,7 +92,7 @@ export default function Projects() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    Key <span className="neon-text">Projects</span>
+                    Featured <span className={styles.highlight}>Projects</span>
                 </motion.h2>
 
                 <div className={styles.grid}>
@@ -203,4 +210,3 @@ export default function Projects() {
         </section>
     );
 }
-

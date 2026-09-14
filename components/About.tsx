@@ -5,9 +5,9 @@ import styles from "./About.module.css";
 
 export default function About() {
     const stats = [
-        { label: "Exp in Tech", value: "3+ Years" },
-        { label: "VR Projects", value: "5+" },
-        { label: "Learning", value: "HSUHK" }
+        { label: "Tech Experience", value: "3+ Years" },
+        { label: "Projects Delivered", value: "6+" },
+        { label: "Automation Tools", value: "4+" }
     ];
 
     return (
@@ -16,19 +16,18 @@ export default function About() {
                 <div className={styles.grid}>
                     <motion.div
                         className={styles.content}
-                        initial={{ opacity: 0, x: -50 }}
+                        initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: 0.6 }}
                     >
-                        <h2 className={styles.title}>About <span className="neon-text">Me</span></h2>
+                        <h2 className={styles.title}>About <span className={styles.highlight}>Me</span></h2>
                         <p className={styles.paragraph}>
                             I am a final-year MSIM student at Hang Seng University of Hong Kong (HSUHK).
-                            My journey in tech began with a curiosity for immersive worlds, leading me to specialize in VR Development and IT Operations.
+                            My journey in tech began with a curiosity for immersive worlds, leading me to specialize in VR Development, IT Operations, and Workflow Automation.
                         </p>
                         <p className={styles.paragraph}>
-                            With a strong background in Unity and C#, I've had the privilege of working on professional-grade VR experiences,
-                            including a horror game that entertained thousands during Halloween events. I thrive at the intersection of technical execution and creative problem-solving.
+                            Whether I am building high-traffic VR games in Unity, ensuring 100% uptime for complex hardware networks, or engineering automated tools to streamline business operations, I thrive at the intersection of technical execution and operational efficiency.
                         </p>
 
                         <div className={styles.stats}>
@@ -43,15 +42,15 @@ export default function About() {
 
                     <motion.div
                         className={styles.visual}
-                        initial={{ opacity: 0, scale: 0.9 }}
+                        initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: 0.6 }}
                     >
-                        <div className={`${styles.box} glass neon-box`}>
+                        <div className={styles.box}>
                             <div className={styles.boxContent}>
-                                <h3>My Goal</h3>
-                                <p>To redefine human interaction through immersive technology and seamless digital experiences.</p>
+                                <h3>My Approach</h3>
+                                <p>I believe technology should solve real problems. From engaging virtual reality to robust backend automations, I build reliable, scalable solutions.</p>
                             </div>
                         </div>
                     </motion.div>

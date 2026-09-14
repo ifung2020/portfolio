@@ -19,8 +19,8 @@ export default function Navbar() {
 
     const navItems = [
         { name: "About", href: "#about" },
-        { name: "Skills", href: "#toolkit" },
-        { name: "Exp", href: "#experience" },
+        { name: "Skills", href: "#skills" },
+        { name: "Experience", href: "#experience" },
         { name: "Projects", href: "#projects" },
     ];
 
@@ -34,7 +34,7 @@ export default function Navbar() {
             <div className={styles.container}>
                 <motion.div
                     className={styles.logo}
-                    whileHover={{ scale: 1.05, textShadow: "0 0 15px var(--primary)" }}
+                    whileHover={{ scale: 1.05 }}
                 >
                     <Link href="/">SL</Link>
                 </motion.div>

@@ -6,34 +6,28 @@ import styles from "./Experience.module.css";
 export default function Experience() {
     const experiences = [
         {
-            role: "Part-time Team Member",
-            company: "Decathlon HK",
-            period: "Current (1 year)",
-            description: "Assisting customers and managing sports equipment operations."
+            role: "Omni Sports Leader (Part-time)",
+            company: "Decathlon HK (Tuen Mun)",
+            period: "Current",
+            description: "Adapted and deployed a corporate IT shipment file to automatically filter branch-specific data and alert store staff. Scripted automated email alert systems for safety compliance and built a batch sign-out tool to reduce daily administrative overhead."
         },
         {
-            role: "Operations & VR Game Dev",
+            role: "Operations & VR Game Developer",
             company: "Varlive HK",
             period: "1 Year",
-            description: "Operated VR equipment, developed a VR horror game for Halloween events using Unity & C#, and ensured smooth customer experiences."
+            description: "Proactively developed a seasonal VR horror game using Unity & C# for Halloween. Programmed AI NPC behaviors and managed mission-critical VR hardware for thousands of concurrent users."
         },
         {
             role: "VR Operations Leader",
             company: "Sandbox VR HK",
             period: "1 Year",
-            description: "Managed VR sessions, troubleshot equipment issues, and ensured high-quality immersive experiences for guests."
+            description: "Led a technical team ensuring 100% uptime for high-volume immersive sessions. Troubleshot real-time networking, hardware, and software deployment issues."
         },
         {
             role: "LARP Host & Gamemaster",
             company: "CrimeLab, Kwun Tong",
             period: "Apr 2021 – Aug 2022",
             description: "Hosted classic tabletop/board games and LARP events. Created immersive scripts and led storytelling sessions."
-        },
-        {
-            role: "Tutor",
-            company: "QESOSA, Tin Shui Wai",
-            period: "Sep 2021 – Aug 2022",
-            description: "Created lesson plans and teaching materials to aid English Grammar learning."
         }
     ];
 
@@ -46,7 +40,7 @@ export default function Experience() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    My <span className="neon-text">Journey</span>
+                    Professional <span className={styles.highlight}>Experience</span>
                 </motion.h2>
 
                 <div className={styles.timeline}>
@@ -54,16 +48,16 @@ export default function Experience() {
                         <motion.div
                             key={index}
                             className={styles.item}
-                            initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
                             <div className={styles.dot}></div>
                             <div className={styles.content}>
                                 <h3 className={styles.role}>{exp.role}</h3>
                                 <h4 className={styles.company}>{exp.company}</h4>
-                                <p className={styles.period}>{exp.period}</p>
+                                <span className={styles.period}>{exp.period}</span>
                                 <p className={styles.description}>{exp.description}</p>
                             </div>
                         </motion.div>

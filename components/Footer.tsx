@@ -7,7 +7,7 @@ export default function Footer() {
     return (
         <footer className={styles.footer} id="contact">
             <div className="container">
-                <h2 className={styles.title}>Get In <span className="neon-text">Touch</span></h2>
+                <h2 className={styles.title}>Get In <span className={styles.highlight}>Touch</span></h2>
                 <div className={styles.contactInfo}>
                     <div className={styles.item}>
                         <Mail size={20} />
@@ -19,7 +19,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className={styles.copyright}>
-                    &copy; {new Date().getFullYear()} Steven Lai. Crafted with precision.
+                    &copy; {new Date().getFullYear()} Steven Lai. Engineered with precision.
                 </div>
             </div>
         </footer>

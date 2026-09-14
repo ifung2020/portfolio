@@ -1,16 +1,14 @@
 :root {
-  --background: #020617;
-  --foreground: #f8fafc;
-  --primary: #a5f3fc;
-  /* Lighter Cyan */
-  --primary-glow: rgba(165, 243, 252, 0.4);
-  --secondary: #38bdf8;
-  /* Soft Light Blue */
-  --accent: #22d3ee;
-  --card-bg: rgba(15, 23, 42, 0.6);
-  --glass-border: rgba(165, 243, 252, 0.15);
+  --background: #ffffff;
+  --foreground: #111827;
+  --primary: #2563eb;
+  --primary-glow: transparent;
+  --secondary: #1d4ed8;
+  --accent: #64748b;
+  --card-bg: #ffffff;
+  --glass-border: #e2e8f0;
   --font-inter: var(--font-inter);
-  --font-orbitron: var(--font-orbitron);
+  --font-orbitron: var(--font-inter);
 }
 
 html,
@@ -30,9 +28,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-orbitron);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-family: var(--font-inter);
+  font-weight: 600;
+  letter-spacing: -0.025em;
 }
 
 * {
@@ -67,40 +65,34 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: #020617;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: #cbd5e1;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
+  background: #94a3b8;
 }
 
 /* Effects */
 .glass {
   background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 .neon-text {
   color: var(--primary);
-  text-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--primary-glow);
 }
 
 .neon-box {
-  box-shadow: 0 0 15px var(--primary-glow), inset 0 0 10px var(--primary-glow);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--primary);
 }
