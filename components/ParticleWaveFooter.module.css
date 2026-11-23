@@ -41,10 +41,19 @@
   color: var(--muted);
 }
 
+.controlRow {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+}
+
 .waveActions {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 10px;
   padding-bottom: 4px;
 }
@@ -59,6 +68,94 @@
 .waveLinkActive {
   color: var(--teal);
   background-size: 100% 1px;
+}
+
+.navBtn {
+  font-size: 15px;
+  color: var(--muted);
+  padding-bottom: 3px;
+}
+
+.navBtn:hover {
+  color: var(--teal);
+}
+
+.trackList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border-top: 1px solid var(--hair);
+}
+
+.trackItem {
+  border-bottom: 1px solid var(--hair);
+}
+
+.trackBtn {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 32px minmax(110px, 1fr) minmax(120px, 1.1fr) auto;
+  align-items: baseline;
+  gap: 12px;
+  padding: 13px 4px;
+  background: transparent;
+  border: 0;
+  color: var(--paper);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.trackBtn:hover {
+  color: var(--teal);
+  padding-left: 10px;
+}
+
+.trackBtnActive {
+  color: var(--teal);
+}
+
+.trackNum {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.trackBtnActive .trackNum {
+  color: var(--teal);
+}
+
+.trackTitle {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.trackArtist {
+  font-size: 14px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trackBtnActive .trackArtist {
+  color: var(--paper);
+}
+
+.trackState {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: right;
+}
+
+.trackBtnActive .trackState {
+  color: var(--teal);
 }
 
 .canvasShell {

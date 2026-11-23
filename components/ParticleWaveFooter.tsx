@@ -6,14 +6,48 @@ import { PROFILE, PROJECTS } from "@/data/portfolio";
 import SplitChars from "./SplitChars";
 import styles from "./ParticleWaveFooter.module.css";
 
-const TRACK = {
-  title: "505",
-  artist: "Arctic Monkeys",
-  album: "Favourite Worst Nightmare",
-  previewUrl:
-    "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d1/0d/ab/d10dabc8-cceb-e718-401f-01516b009460/mzaf_13845311225859403599.plus.aac.p.m4a",
-  appleMusicUrl: "https://music.apple.com/search?term=Arctic%20Monkeys%20505",
-};
+interface PlaylistTrack {
+  id: string;
+  title: string;
+  artist: string;
+  album: string;
+  previewUrl: string;
+}
+
+const PLAYLIST: PlaylistTrack[] = [
+  {
+    id: "505",
+    title: "505",
+    artist: "Arctic Monkeys",
+    album: "Favourite Worst Nightmare",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d1/0d/ab/d10dabc8-cceb-e718-401f-01516b009460/mzaf_13845311225859403599.plus.aac.p.m4a",
+  },
+  {
+    id: "babydoll",
+    title: "Babydoll",
+    artist: "Dominic Fike",
+    album: "Don't Forget About Me, Demos",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/1e/bb/88/1ebb8866-ba1f-1a8b-8e82-90bc9ba0c1ed/mzaf_10828213515596552720.plus.aac.p.m4a",
+  },
+  {
+    id: "cicada",
+    title: "Cicada",
+    artist: "Good Kid",
+    album: "Can We Hang Out Sometime?",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/ab/4b/a7/ab4ba732-a684-9f54-dfcc-a5e32ee27bfc/mzaf_7299946333970899566.plus.aac.p.m4a",
+  },
+  {
+    id: "push",
+    title: "Push",
+    artist: "Connor Price & Nic D",
+    album: "About Time",
+    previewUrl:
+      "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/b8/b7/78/b8b778e3-c641-10ec-23d8-e400a1553654/mzaf_16801231991966062714.plus.aac.p.m4a",
+  },
+];
 
 export default function ParticleWaveFooter() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -22,14 +56,24 @@ export default function ParticleWaveFooter() {
   const analyserRef = useRef<AnalyserNode | null>(null);
   const freqRef = useRef<Uint8Array<ArrayBuffer> | null>(null);
   const playingRef = useRef(false);
+  const trackIdxRef = useRef(0);
 
+  const [trackIdx, setTrackIdx] = useState(0);
   const [playing, setPlaying] = useState(false);
-  const [statusText, setStatusText] = useState("Arctic Monkeys — 505");
+  const [statusText, setStatusText] = useState(
+    `${PLAYLIST[0].artist} — ${PLAYLIST[0].title}`
+  );
   const [copied, setCopied] = useState(false);
+
+  const activeTrack = PLAYLIST[trackIdx] || PLAYLIST[0];
 
   useEffect(() => {
     playingRef.current = playing;
   }, [playing]);
+
+  useEffect(() => {
+    trackIdxRef.current = trackIdx;
+  }, [trackIdx]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -174,51 +218,107 @@ export default function ParticleWaveFooter() {
     };
   }, []);
 
-  const togglePlay = async () => {
-    try {
-      if (!audioRef.current) {
-        const audio = new Audio(TRACK.previewUrl);
-        audio.crossOrigin = "anonymous";
-        audio.loop = true;
-        audio.preload = "auto";
-        audio.addEventListener("error", () => {
-          setPlaying(false);
-          setStatusText("Preview unavailable — open on Apple Music");
-        });
-        audioRef.current = audio;
+  const ensureAudioEngine = (initialUrl: string) => {
+    if (!audioRef.current) {
+      const audio = new Audio(initialUrl);
+      audio.crossOrigin = "anonymous";
+      audio.loop = false;
+      audio.preload = "auto";
+      audio.addEventListener("error", () => {
+        setPlaying(false);
+        setStatusText("Preview unavailable");
+      });
+      audio.addEventListener("ended", () => {
+        const nextIdx = (trackIdxRef.current + 1) % PLAYLIST.length;
+        const nextTrack = PLAYLIST[nextIdx];
+        trackIdxRef.current = nextIdx;
+        setTrackIdx(nextIdx);
+        audio.src = nextTrack.previewUrl;
+        audio.load();
+        audio
+          .play()
+          .then(() => {
+            setPlaying(true);
+            setStatusText(
+              `Playing · ${nextTrack.artist} — ${nextTrack.title} (30s preview)`
+            );
+          })
+          .catch(() => {
+            setPlaying(false);
+          });
+      });
+      audioRef.current = audio;
 
-        const AudioCtx =
-          window.AudioContext ||
-          (window as unknown as { webkitAudioContext: typeof AudioContext })
-            .webkitAudioContext;
-        if (AudioCtx) {
-          const ac = new AudioCtx();
-          const analyser = ac.createAnalyser();
-          analyser.fftSize = 256;
-          analyser.smoothingTimeConstant = 0.78;
-          const src = ac.createMediaElementSource(audio);
-          src.connect(analyser);
-          analyser.connect(ac.destination);
-          audioCtxRef.current = ac;
-          analyserRef.current = analyser;
-          freqRef.current = new Uint8Array(analyser.frequencyBinCount);
-        }
+      const AudioCtx =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext })
+          .webkitAudioContext;
+      if (AudioCtx) {
+        const ac = new AudioCtx();
+        const analyser = ac.createAnalyser();
+        analyser.fftSize = 256;
+        analyser.smoothingTimeConstant = 0.78;
+        const src = ac.createMediaElementSource(audio);
+        src.connect(analyser);
+        analyser.connect(ac.destination);
+        audioCtxRef.current = ac;
+        analyserRef.current = analyser;
+        freqRef.current = new Uint8Array(analyser.frequencyBinCount);
+      }
+    }
+    return audioRef.current;
+  };
+
+  const playTrackAtIndex = async (idx: number) => {
+    const nextIdx = (idx + PLAYLIST.length) % PLAYLIST.length;
+    const target = PLAYLIST[nextIdx];
+    trackIdxRef.current = nextIdx;
+    setTrackIdx(nextIdx);
+
+    try {
+      const audio = ensureAudioEngine(target.previewUrl);
+      const ac = audioCtxRef.current;
+
+      if (audio.src !== target.previewUrl) {
+        audio.pause();
+        audio.src = target.previewUrl;
+        audio.load();
       }
 
-      const audio = audioRef.current;
+      if (ac && ac.state === "suspended") {
+        await ac.resume();
+      }
+      await audio.play();
+      setPlaying(true);
+      setStatusText(`Playing · ${target.artist} — ${target.title} (30s preview)`);
+    } catch {
+      setPlaying(false);
+      setStatusText(`${target.artist} — ${target.title}`);
+    }
+  };
+
+  const togglePlay = async () => {
+    try {
+      const audio = ensureAudioEngine(activeTrack.previewUrl);
       const ac = audioCtxRef.current;
 
       if (playing) {
         audio.pause();
         setPlaying(false);
-        setStatusText(`Paused · ${TRACK.artist} — ${TRACK.title}`);
+        setStatusText(`Paused · ${activeTrack.artist} — ${activeTrack.title}`);
       } else {
+        if (audio.src !== activeTrack.previewUrl) {
+          audio.src = activeTrack.previewUrl;
+          audio.load();
+        }
         if (ac && ac.state === "suspended") {
           await ac.resume();
         }
         await audio.play();
         setPlaying(true);
-        setStatusText(`Playing · ${TRACK.artist} — ${TRACK.title} (30s preview)`);
+        setStatusText(
+          `Playing · ${activeTrack.artist} — ${activeTrack.title} (30s preview)`
+        );
       }
     } catch {
       setPlaying(false);
@@ -226,10 +326,12 @@ export default function ParticleWaveFooter() {
     }
   };
 
-  const jumpToCase = (projectId: string) => {
-    window.dispatchEvent(new CustomEvent("select-case", { detail: projectId }));
-    const el = document.getElementById("cases");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+  const handleTrackClick = (idx: number) => {
+    if (idx === trackIdx) {
+      void togglePlay();
+    } else {
+      void playTrackAtIndex(idx);
+    }
   };
 
   const handleCopyEmail = async () => {
@@ -254,24 +356,69 @@ export default function ParticleWaveFooter() {
               <SplitChars text="LISTEN TO" startIndex={6} />
             </h2>
             <p className={styles.waveDesc} data-rv="rise">
-              {TRACK.artist} — {TRACK.title}
+              {activeTrack.artist} — {activeTrack.title}
             </p>
             <p className={styles.trackStatus} aria-live="polite">
               {statusText}
             </p>
+            <div className={styles.controlRow} data-rv="rise">
+              <button
+                type="button"
+                className={`u-link ${styles.waveLink} ${
+                  playing ? styles.waveLinkActive : ""
+                }`}
+                aria-pressed={playing}
+                onClick={togglePlay}
+              >
+                {playing ? "Pause" : "Listen \u2192"}
+              </button>
+              <button
+                type="button"
+                className={`u-link ${styles.navBtn}`}
+                onClick={() => void playTrackAtIndex(trackIdx - 1)}
+                aria-label="Previous track"
+              >
+                &larr; Prev
+              </button>
+              <button
+                type="button"
+                className={`u-link ${styles.navBtn}`}
+                onClick={() => void playTrackAtIndex(trackIdx + 1)}
+                aria-label="Next track"
+              >
+                Next &rarr;
+              </button>
+            </div>
           </div>
 
           <div className={styles.waveActions} data-rv="rise">
-            <button
-              type="button"
-              className={`u-link ${styles.waveLink} ${
-                playing ? styles.waveLinkActive : ""
-              }`}
-              aria-pressed={playing}
-              onClick={togglePlay}
-            >
-              {playing ? "Pause" : "Listen \u2192"}
-            </button>
+            <ul className={styles.trackList} aria-label="Playlist tracks">
+              {PLAYLIST.map((track, idx) => {
+                const isActive = idx === trackIdx;
+                const isTrackPlaying = isActive && playing;
+                return (
+                  <li key={track.id} className={styles.trackItem}>
+                    <button
+                      type="button"
+                      className={`${styles.trackBtn} ${
+                        isActive ? styles.trackBtnActive : ""
+                      }`}
+                      onClick={() => handleTrackClick(idx)}
+                      aria-current={isActive ? "true" : undefined}
+                    >
+                      <span className={styles.trackNum}>
+                        {String(idx + 1).padStart(2, "0")}
+                      </span>
+                      <span className={styles.trackTitle}>{track.title}</span>
+                      <span className={styles.trackArtist}>{track.artist}</span>
+                      <span className={styles.trackState}>
+                        {isTrackPlaying ? "PLAYING" : isActive ? "SELECTED" : "PLAY"}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
 
@@ -279,7 +426,7 @@ export default function ParticleWaveFooter() {
           <canvas
             ref={canvasRef}
             className={styles.waveCanvas}
-            aria-label="Live audio spectrum particle wave for Arctic Monkeys 505"
+            aria-label={`Live audio spectrum particle wave for ${activeTrack.artist} ${activeTrack.title}`}
           />
         </div>
       </section>
