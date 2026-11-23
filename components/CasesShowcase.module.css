@@ -1,0 +1,507 @@
+.section {
+  position: relative;
+  z-index: 4;
+  padding: clamp(56px, 9vh, 112px) 0 clamp(40px, 6vh, 80px);
+}
+
+.headerInner,
+.stageInner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.headerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.titlePair {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(14px, 2vw, 28px);
+  flex-wrap: wrap;
+}
+
+.heading {
+  font-size: var(--fs-l);
+  color: var(--paper);
+}
+
+.subTag {
+  font-size: clamp(22px, 2.2vw, 32px);
+  letter-spacing: 0.02em;
+  color: var(--paper);
+}
+
+/* Oval 1px Filter Pills */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filterPill {
+  height: 30px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--paper);
+  transition:
+    background-color 0.22s var(--ease),
+    border-color 0.22s var(--ease),
+    color 0.22s var(--ease);
+}
+
+.filterPill:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.filterPillActive {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--ink);
+}
+
+.filterPillActive:hover {
+  color: var(--ink);
+}
+
+/* Spotlight Stage */
+.stageGrid {
+  display: grid;
+  grid-template-columns: 1.18fr 0.82fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: stretch;
+  margin-bottom: clamp(44px, 6vh, 72px);
+}
+
+.visualFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--frame);
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.photoStage,
+.glyphStage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.photoFill {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.imgCover {
+  object-fit: cover;
+}
+
+.imgContain {
+  object-fit: contain;
+  padding: 28px;
+  background: var(--frame);
+}
+
+.glyphCaption {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.frameControls {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.frameCounter {
+  background: rgba(0, 3, 26, 0.78);
+  color: var(--paper);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.frameBtns {
+  display: flex;
+  gap: 6px;
+}
+
+.ctrlBtn {
+  background: rgba(0, 3, 26, 0.82);
+  color: var(--paper);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  height: 28px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.ctrlBtn:hover {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--ink);
+}
+
+.tealBar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.tealFill {
+  display: block;
+  height: 100%;
+  background: var(--teal);
+  transition: width 0.35s var(--ease);
+}
+
+/* Right Metadata + Compact Project Switcher */
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 24px;
+  min-width: 0;
+}
+
+/* Lock metadata height so hovering between 1-line and 2-line projects never shifts indexList */
+.copySlot {
+  min-height: 290px;
+}
+
+.copyBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.meta {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.projectTitle {
+  font-size: clamp(38px, 4.2vw, 62px);
+  color: var(--paper);
+  line-height: 0.88;
+}
+
+.projectTitleLink {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+
+.projectTitleLink:hover {
+  color: var(--teal);
+}
+
+.tagline {
+  font-size: var(--fs-p);
+  color: var(--paper);
+  line-height: 1.35;
+  max-width: 36ch;
+}
+
+.tags {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding-top: 6px;
+}
+
+.actionLink {
+  font-size: var(--fs-s);
+  color: var(--teal);
+  padding-bottom: 3px;
+}
+
+.actionLink:hover {
+  color: var(--paper);
+}
+
+.indexList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--hair);
+}
+
+.indexBtn {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: left;
+  color: var(--muted);
+  transition:
+    color 0.2s ease,
+    padding-left 0.25s var(--ease);
+}
+
+.indexBtn:hover,
+.indexBtnActive {
+  color: var(--paper);
+  padding-left: 8px;
+}
+
+.indexBtnActive .indexNum,
+.indexBtnActive .indexName {
+  color: var(--teal);
+}
+
+.indexNum {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.indexName {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.indexYear {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Full-Bleed Horizontal Marquee (.feed) */
+.feedViewport {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  padding: 26px 0;
+}
+
+.feedTrack {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: feedScroll 52s linear infinite;
+}
+
+.feedViewport:hover .feedTrack,
+.feedViewport:focus-within .feedTrack {
+  animation-play-state: paused;
+}
+
+@keyframes feedScroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.feedCard {
+  position: relative;
+  width: 248px;
+  height: 166px;
+  flex-shrink: 0;
+  background: var(--frame);
+  border-radius: 0;
+  overflow: hidden;
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+.feedCard:hover,
+.feedCard:focus-visible {
+  transform: scale(1.13);
+  z-index: 12;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65);
+}
+
+.feedImgCover {
+  object-fit: cover;
+}
+
+.feedImgContain {
+  object-fit: contain;
+  padding: 20px;
+}
+
+.feedGlyphCard {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(56, 177, 186, 0.16) 0%,
+    #0a1030 72%
+  );
+}
+
+.feedGlyphText {
+  font-size: 62px;
+  color: var(--teal);
+  line-height: 0.85;
+}
+
+.feedGlyphSub {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+.feedHoverBar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--teal);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s var(--ease);
+}
+
+.feedCard:hover .feedHoverBar,
+.feedCard:focus-visible .feedHoverBar {
+  transform: scaleX(1);
+}
+
+/* Fullscreen Lightbox */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: rgba(0, 3, 26, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gutter);
+}
+
+.modalBox {
+  width: 100%;
+  max-width: 1040px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.modalHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.modalTitle {
+  font-size: clamp(32px, 3.8vw, 52px);
+  color: var(--paper);
+}
+
+.modalCount {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.modalPill {
+  height: 32px;
+  padding: 0 16px;
+  border: 1px solid var(--paper);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--paper);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.modalPill:hover {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--ink);
+}
+
+.modalStage {
+  position: relative;
+  width: 100%;
+  height: min(68svh, 580px);
+  background: var(--frame);
+}
+
+.modalImg {
+  object-fit: contain;
+}
+
+.modalNav {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 959px) {
+  .stageGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .feedCard {
+    width: 200px;
+    height: 132px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feedTrack {
+    animation: none;
+  }
+}

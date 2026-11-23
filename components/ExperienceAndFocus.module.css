@@ -1,0 +1,239 @@
+.wrapper {
+  position: relative;
+  z-index: 4;
+  padding: clamp(56px, 8vh, 110px) 0 clamp(48px, 8vh, 96px);
+}
+
+.inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(96px, 14vh, 180px);
+}
+
+.secHeading {
+  font-size: var(--fs-l);
+  color: var(--paper);
+  margin-bottom: clamp(24px, 3.2vw, 40px);
+}
+
+.secHeadingSmall {
+  font-size: clamp(46px, 5.2vw, 76px);
+  color: var(--paper);
+  margin-bottom: 18px;
+}
+
+/* Row 1: Experience + SL Smiley Badge & Education */
+.expRow {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+
+.expList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 580px;
+}
+
+.expBtn,
+.expStatic {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 2px 0;
+  transition: transform 0.25s var(--ease);
+}
+
+.expBtn:hover {
+  transform: translateX(6px);
+}
+
+.expTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+
+.expCompany {
+  font-size: var(--fs-p);
+  font-weight: 700;
+  color: var(--paper);
+  transition: color 0.2s ease;
+}
+
+.expBtn:hover .expCompany {
+  color: var(--teal);
+}
+
+.expMeta {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.expLine {
+  font-size: var(--fs-s);
+  color: rgba(255, 255, 255, 0.84);
+  line-height: 1.4;
+}
+
+.badgeEduCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 12px;
+}
+
+.eduSchool {
+  font-size: var(--fs-p);
+  font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 6px;
+}
+
+.eduMeta {
+  font-size: var(--fs-s);
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* Row 2: Toolkit Brand Logos Grid + Toolkit */
+.collageRow {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.logoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.logoTile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 158px;
+  padding: 20px;
+  background: var(--frame);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--paper);
+  transition:
+    border-color 0.25s var(--ease),
+    transform 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+
+.logoTile:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+  transform: translateY(-3px);
+}
+
+.logoMark {
+  display: inline-flex;
+  margin-bottom: 18px;
+}
+
+.logoName {
+  font-size: var(--fs-p);
+  font-weight: 700;
+  color: var(--paper);
+  line-height: 1.15;
+}
+
+.logoCat {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.toolkitCol {
+  padding-top: 8px;
+}
+
+.toolkitCols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+  margin-bottom: 24px;
+}
+
+.plainList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: var(--fs-s);
+  color: var(--paper);
+  line-height: 1.45;
+}
+
+.languages {
+  font-size: 14px;
+  color: var(--teal);
+  letter-spacing: 0.02em;
+}
+
+/* Row 3: Focused On + Built For Real Operations */
+.focusRow {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+
+.narrative {
+  font-size: clamp(19px, 1.75vw, 24px);
+  line-height: 1.28;
+  color: var(--paper);
+  max-width: 38ch;
+}
+
+@media (max-width: 959px) {
+  .expRow,
+  .collageRow,
+  .focusRow {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .badgeEduCol {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 28px;
+    padding-top: 0;
+  }
+
+  .logoGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  .logoGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .logoTile {
+    min-height: 132px;
+    padding: 14px;
+  }
+
+  .toolkitCols {
+    grid-template-columns: 1fr 1fr;
+  }
+}

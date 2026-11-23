@@ -1,0 +1,192 @@
+.wrap {
+  position: relative;
+  z-index: 4;
+}
+
+/* Wave Band */
+.waveSection {
+  padding-top: clamp(64px, 10vh, 130px);
+}
+
+.waveInner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+  align-items: end;
+}
+
+.waveHeading {
+  font-size: var(--fs-l);
+  color: var(--teal);
+  margin-bottom: 24px;
+}
+
+.waveDesc {
+  font-size: var(--fs-p);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.18;
+  color: var(--paper);
+  max-width: 30ch;
+}
+
+.trackStatus {
+  margin-top: 8px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.waveActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding-bottom: 4px;
+}
+
+.waveLink {
+  font-size: var(--fs-s);
+  color: var(--paper);
+  padding-bottom: 3px;
+}
+
+.waveLink:hover,
+.waveLinkActive {
+  color: var(--teal);
+  background-size: 100% 1px;
+}
+
+.canvasShell {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  height: clamp(270px, 34vw, 460px);
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.waveCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Footer */
+.footer {
+  padding: clamp(32px, 5vh, 60px) 0 clamp(64px, 9vh, 110px);
+}
+
+.footerInner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.dividerRow {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.6vw, 36px);
+  margin-bottom: clamp(48px, 8vh, 110px);
+}
+
+.touchLabel {
+  font-size: clamp(18px, 1.7vw, 24px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.hairline {
+  flex: 1;
+  height: 1px;
+  background: var(--hair);
+}
+
+.footerSplit {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(40px, 6vw, 88px);
+  align-items: stretch;
+}
+
+.bigLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.bigLink {
+  font-size: var(--fs-xxl);
+  color: var(--paper);
+  line-height: 0.8;
+  transition: color 0.25s ease;
+}
+
+.bigLink:hover,
+.bigLink:focus-visible {
+  color: var(--teal);
+}
+
+.rightCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 36px;
+  padding-top: 6px;
+}
+
+.smallLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.smallLink {
+  font-size: var(--fs-p);
+  color: var(--paper);
+  line-height: 1.4;
+  padding-bottom: 2px;
+}
+
+.smallLink:hover {
+  color: var(--teal);
+}
+
+.emailBlock {
+  padding-bottom: 4px;
+}
+
+.emailBtn {
+  font-size: var(--fs-p);
+  color: var(--paper);
+  padding-bottom: 3px;
+  user-select: all;
+  text-align: left;
+  word-break: break-word;
+}
+
+.emailBtn:hover {
+  color: var(--teal);
+}
+
+@media (max-width: 959px) {
+  .waveInner,
+  .footerSplit {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .smallLinks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+  }
+}

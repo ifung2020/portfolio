@@ -1,13 +1,25 @@
 import type { Metadata } from "next";
-import { Inter, Orbitron } from "next/font/google";
+import { Inter, Sofia_Sans_Extra_Condensed } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const orbitron = Orbitron({ subsets: ["latin"], variable: "--font-orbitron" });
+const display = Sofia_Sans_Extra_Condensed({
+  subsets: ["latin"],
+  weight: ["800", "900"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const text = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-text",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "Steven Lai | VR Developer Portfolio",
-  description: "Portfolio of Steven Lai, a VR Developer and MSIM Student.",
+  title: "Steven Lai — Operations Automation & VR Developer",
+  description:
+    "Steven Lai builds retail operations automation and Unity VR experiences in Hong Kong.",
 };
 
 export default function RootLayout({
@@ -16,10 +28,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${orbitron.variable} bg-background text-foreground antialiased`}>
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={`${display.variable} ${text.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('rv-ready')",
+          }}
+        />
+      </head>
+      <body>{children}</body>
     </html>
   );
 }

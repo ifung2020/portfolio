@@ -1,0 +1,255 @@
+.hero {
+  position: relative;
+  width: 100%;
+  padding-top: 20px;
+  overflow: visible;
+}
+
+/* Minimal oval utility pills pinned top-right */
+.topPills {
+  position: absolute;
+  top: 20px;
+  right: var(--gutter);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pill {
+  min-width: 54px;
+  height: 28px;
+  padding: 0 14px;
+  border: 1px solid var(--paper);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 0.25s var(--ease),
+    border-color 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+
+.pill:hover {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--ink);
+}
+
+.pillAccent {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: var(--ink);
+}
+
+.pillAccent:hover {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--ink);
+}
+
+/* Full-width oversized teal wordmark */
+.wordmarkWrap {
+  padding: 42px var(--gutter) 0;
+  text-align: center;
+}
+
+.wordmark {
+  color: var(--teal);
+  font-size: clamp(76px, 21.5vw, 310px);
+  line-height: 0.84;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+/* Particle Portrait + 3-Axis Swiss Poster Overlay */
+.stage {
+  position: relative;
+  min-height: clamp(580px, 72vh, 800px);
+  margin-top: -8px;
+}
+
+/* Central 3D full-body figure slot — exact lovelyfriendly.com zoomed-in scale (2203px on 1440px) */
+.figureSlot {
+  --fig-h: calc(min(100vw, 1440px) * 1.53);
+  position: absolute;
+  top: 0;
+  height: var(--fig-h);
+  width: calc(var(--fig-h) * 0.38);
+  left: 44%;
+  transform: translateX(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.canvasLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.posterGrid {
+  position: relative;
+  z-index: 5;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: clamp(56px, 11vh, 130px) var(--gutter) clamp(64px, 10vh, 110px);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  row-gap: clamp(52px, 10vh, 120px);
+  column-gap: 24px;
+  pointer-events: none;
+}
+
+.posterGrid a,
+.posterGrid button {
+  pointer-events: auto;
+}
+
+.greeting {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: start;
+}
+
+.greetingText {
+  font-size: var(--fs-m);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+
+.copyO {
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.roles {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.roleItem {
+  font-size: var(--fs-s);
+  color: var(--paper);
+  line-height: 1.4;
+}
+
+.bioLead {
+  grid-column: 2 / span 2;
+  grid-row: 3;
+  max-width: 24ch;
+  padding-top: 64px;
+  justify-self: end;
+}
+
+.leadCopy {
+  font-size: var(--fs-lead);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  margin-bottom: 24px;
+}
+
+.leadLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+}
+
+.leadLink {
+  font-size: var(--fs-s);
+  color: var(--teal);
+  padding-bottom: 3px;
+}
+
+.leadLink:hover {
+  color: var(--paper);
+}
+
+@media (max-width: 959px) {
+  .topPills {
+    top: 14px;
+  }
+
+  .figureSlot {
+    --fig-h: clamp(1150px, 165vh, 1550px);
+    top: 0;
+    left: 50%;
+    height: var(--fig-h);
+    width: calc(var(--fig-h) * 0.38);
+  }
+
+  .wordmarkWrap {
+    padding-top: 52px;
+  }
+
+  .wordmark {
+    font-size: clamp(64px, 21vw, 150px);
+  }
+
+  .stage {
+    min-height: 620px;
+    margin-top: 0;
+  }
+
+  .canvasLayer {
+    height: 480px;
+  }
+
+  .posterGrid {
+    padding-top: 300px;
+    padding-bottom: 48px;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 36px;
+    background: none;
+    text-shadow: 0 2px 14px rgba(0, 3, 26, 0.85);
+  }
+
+  .greeting {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .roles {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    text-align: right;
+  }
+
+  .bioLead {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    max-width: 100%;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .posterGrid {
+    padding-top: 250px;
+    column-gap: 14px;
+  }
+
+  .greetingText {
+    font-size: 20px;
+  }
+
+  .roleItem {
+    font-size: 14px;
+  }
+}

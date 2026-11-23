@@ -1,24 +1,22 @@
-import Image from "next/image";
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Skills from "@/components/Skills";
-import Experience from "@/components/Experience";
-import Education from "@/components/Education";
-import Projects from "@/components/Projects";
-import Footer from "@/components/Footer";
+import RevealObserver from "@/components/RevealObserver";
+import HeroSection from "@/components/HeroSection";
+import ExperienceAndFocus from "@/components/ExperienceAndFocus";
+import CasesShowcase from "@/components/CasesShowcase";
+import ParticleWaveFooter from "@/components/ParticleWaveFooter";
 
 export default function Home() {
   return (
-    <main>
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Education />
-      <Projects />
-      <Footer />
-    </main>
+    <>
+      <a href="#cases" className="sr-only">
+        Skip to cases
+      </a>
+      <RevealObserver />
+      <main>
+        <HeroSection />
+        <ExperienceAndFocus />
+        <CasesShowcase />
+        <ParticleWaveFooter />
+      </main>
+    </>
   );
 }
